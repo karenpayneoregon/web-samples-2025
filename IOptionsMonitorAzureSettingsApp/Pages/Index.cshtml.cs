@@ -82,6 +82,7 @@ public class IndexModel : PageModel
                 _lastDefaultConnectionString);
 
             _lastDefaultConnectionString = latestSettings.ConnectionString;
+
         }
         else if (latestSettings.TenantId != _lastDefaultTenantId)
         {
@@ -131,7 +132,15 @@ public class IndexModel : PageModel
         return new JsonResult(new { updated = false });
     }
 
-
+    /// <summary>
+    /// Loads the current Azure settings and updates the corresponding properties.
+    /// </summary>
+    /// <remarks>
+    /// This method retrieves the default and tenant-specific Azure settings using 
+    /// <see cref="IOptionsMonitor{TOptions}"/> and updates the public properties of the 
+    /// <see cref="IndexModel"/> class. It also updates the static variables to persist the 
+    /// latest configuration values across requests.
+    /// </remarks>
     private void LoadSettings()
     {
         var defaultSettings = _optionsMonitor.CurrentValue;

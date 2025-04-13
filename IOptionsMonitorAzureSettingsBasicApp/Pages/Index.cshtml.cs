@@ -1,6 +1,5 @@
 using IOptionsMonitorAzureSettingsBasicApp.Models;
 using KellermanSoftware.CompareNetObjects;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Options;
 using Serilog;

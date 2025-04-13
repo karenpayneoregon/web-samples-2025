@@ -1,0 +1,24 @@
+﻿@page
+@model IOptionsMonitorAzureSettingsApp.Pages.Index1Model
+@{
+}
+<h1>Azure Settings</h1>
+
+<h2>Default</h2>
+<ul>
+    <li><strong>Connection String:</strong> @Model.DefaultSettings.ConnectionString</li>
+    <li><strong>Tenant ID:</strong> @Model.DefaultSettings.TenantId</li>
+</ul>
+
+<h2>TenantName</h2>
+<ul>
+    <li><strong>Connection String:</strong> @Model.NamedSettings.ConnectionString</li>
+    <li><strong>Tenant ID:</strong> @Model.NamedSettings.TenantId</li>
+</ul>
+
+@if (!string.IsNullOrEmpty(Model.ChangeMessage))
+{
+    <div style="color: green;">
+        <strong>Settings Changed:</strong> @Model.ChangeMessage
+    </div>
+}
