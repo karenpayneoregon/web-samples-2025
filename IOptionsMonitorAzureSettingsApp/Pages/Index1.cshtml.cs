@@ -1,4 +1,4 @@
-using IOptionsMonitorAzureSettingsApp.Models;
+﻿using IOptionsMonitorAzureSettingsApp.Models;
 using IOptionsMonitorAzureSettingsApp.Services;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 #pragma warning disable CS8618, CS9264
@@ -7,25 +7,23 @@ namespace IOptionsMonitorAzureSettingsApp.Pages
 {
     public class Index1Model : PageModel
     {
-        private readonly AzureService _azureService;
-        private static string? _latestChangeMessage;
+        private readonly SettingsMonitorService _monitor;
 
-        public AzureSettings DefaultSettings { get; private set; }
-        public AzureSettings NamedSettings { get; private set; }
-        public string? ChangeMessage => _latestChangeMessage;
+        public AzureSettings Settings { get; private set; }
+        public string SnapshotHash { get; private set; }
 
-        public Index1Model(AzureService azureService)
+        public Index1Model(SettingsMonitorService monitor)
         {
-            _azureService = azureService;
-
-            // Subscribe only once per app domain
-            _azureService.OnSettingsChanged += msg => _latestChangeMessage = msg;
+            _monitor = monitor;
         }
 
         public void OnGet()
         {
-            DefaultSettings = _azureService.GetDefaultSettings();
-            NamedSettings = _azureService.GetNamedSettings();
+            // ✅ Get the latest settings directly from singleton service
+            Settings = _monitor.GetCurrent();
+            SnapshotHash = _monitor.GetSnapshotHash();
+            Console.WriteLine($"[Page Rendered] Settings: {SnapshotHash}");
         }
     }
 }
+

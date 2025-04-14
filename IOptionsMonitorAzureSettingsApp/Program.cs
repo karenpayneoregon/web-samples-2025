@@ -20,21 +20,26 @@ public class Program
 
         builder.Host.UseSerilog();
 
+
         // Load configuration with reload on change
         builder.Configuration.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
 
-        // Register IOptionsMonitor with reloading enabled
+        // Register IOptionsMonitor with reloading enabled for Index page
         builder.Services.Configure<AzureSettings>(builder.Configuration.GetSection("AzureSettings"));
         builder.Services.Configure<AzureSettings>("TenantName", builder.Configuration.GetSection("TenantNameAzureSettings"));
 
-        // Register our services
-        builder.Services.AddSingleton<AzureService>();
-        builder.Services.AddScoped<SettingsService>();
+
+        // Service to monitor changes in Azure settings in Index1 page
+        builder.Services.Configure<AzureSettings>(builder.Configuration.GetSection("Azure"));
+        builder.Services.AddSingleton<SettingsMonitorService>();
 
         // Add services to the container.
         builder.Services.AddRazorPages();
 
+
+
         var app = builder.Build();
+
 
         // Configure the HTTP request pipeline.
         if (!app.Environment.IsDevelopment())

@@ -2,23 +2,40 @@
 @model IOptionsMonitorAzureSettingsApp.Pages.Index1Model
 @{
 }
-<h1>Azure Settings</h1>
 
-<h2>Default</h2>
-<ul>
-    <li><strong>Connection String:</strong> @Model.DefaultSettings.ConnectionString</li>
-    <li><strong>Tenant ID:</strong> @Model.DefaultSettings.TenantId</li>
-</ul>
+<h1 class="text-center">Azure Settings</h1>
 
-<h2>TenantName</h2>
-<ul>
-    <li><strong>Connection String:</strong> @Model.NamedSettings.ConnectionString</li>
-    <li><strong>Tenant ID:</strong> @Model.NamedSettings.TenantId</li>
-</ul>
-
-@if (!string.IsNullOrEmpty(Model.ChangeMessage))
-{
-    <div style="color: green;">
-        <strong>Settings Changed:</strong> @Model.ChangeMessage
+<div class="d-flex justify-content-center">
+    <div id="settings">
+        <p><strong>Connection String:</strong> @Model.Settings.ConnectionString</p>
+        <p><strong>Tenant ID:</strong> @Model.Settings.TenantId</p>
     </div>
-}
+</div>
+
+
+<script>
+    let currentHash = "@Model.SnapshotHash";
+
+    console.log("Polling script loaded. Current hash:", currentHash);
+
+    setInterval(async () => {
+        try {
+            const response = await fetch('/api/settings');
+
+            if (!response.ok) {
+                console.warn("Polling failed:", response.statusText);
+                return;
+            }
+
+            const data = await response.json();
+            console.log("Received hash:", data.snapshotHash);
+
+            if (data.snapshotHash !== currentHash) {
+                console.log("Settings changed. Reloading...");
+                location.reload();
+            }
+        } catch (e) {
+            console.error("Polling error:", e);
+        }
+    }, 5000);
+</script>
