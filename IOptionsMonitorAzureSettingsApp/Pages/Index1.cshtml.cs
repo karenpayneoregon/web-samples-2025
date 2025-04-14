@@ -5,24 +5,28 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace IOptionsMonitorAzureSettingsApp.Pages
 {
-    public class Index1Model : PageModel
+    /// <summary>
+    /// Represents the model for the Index1 Razor Page, providing functionality to retrieve and display
+    /// the latest Azure settings and their corresponding snapshot hash.
+    /// </summary>
+    public class Index1Model(SettingsMonitorService monitor) : PageModel
     {
-        private readonly SettingsMonitorService _monitor;
-
         public AzureSettings Settings { get; private set; }
         public string SnapshotHash { get; private set; }
 
-        public Index1Model(SettingsMonitorService monitor)
-        {
-            _monitor = monitor;
-        }
-
+        /// <summary>
+        /// Handles GET requests for the page and initializes the latest Azure settings and snapshot hash.
+        /// </summary>
+        /// <remarks>
+        /// This method retrieves the current <see cref="AzureSettings"/> and its corresponding snapshot hash
+        /// from the <see cref="SettingsMonitorService"/> singleton service. It ensures that the page is rendered
+        /// with the most up-to-date configuration values.
+        /// </remarks>
         public void OnGet()
         {
-            // ✅ Get the latest settings directly from singleton service
-            Settings = _monitor.GetCurrent();
-            SnapshotHash = _monitor.GetSnapshotHash();
-            Console.WriteLine($"[Page Rendered] Settings: {SnapshotHash}");
+            Settings = monitor.GetCurrent();
+            SnapshotHash = monitor.GetSnapshotHash();
+            //Console.WriteLine($"[Page Rendered] Settings: {SnapshotHash}");
         }
     }
 }

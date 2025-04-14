@@ -77,6 +77,15 @@ public class AzureService
         }
     }
 
+    /// <summary>
+    /// Stores the provided Azure settings in the internal dictionary using the specified key.
+    /// </summary>
+    /// <param name="settings">The <see cref="AzureSettings"/> instance containing the settings to store.</param>
+    /// <param name="key">The key associated with the settings being stored (e.g., "Default" or "TenantName").</param>
+    /// <remarks>
+    /// This method updates the internal dictionary with the connection string and tenant ID from the provided
+    /// <see cref="AzureSettings"/> instance, associating them with the specified key.
+    /// </remarks>
     private void StoreSettings(AzureSettings settings, string key)
     {
         _lastKnownValues[$"{key}_ConnectionString"] = settings.ConnectionString;

@@ -14,6 +14,23 @@
 
 
 <script>
+    /*
+     *
+     * Purpose:
+     * This script ensures that the Razor Page automatically detects and reflects changes in settings without requiring manual
+     * refreshes, providing a dynamic and responsive user experience.
+     *
+     * The code implements a polling mechanism to detect changes in application settings by periodically
+     * fetching data from the server.
+     *
+     * - A setInterval function is set to run every 5 seconds (5000ms).
+     * - A fetch request is sent to the /api/settings endpoint [Settings page] to retrieve the latest settings snapshot.
+     *
+     * Change Detection:
+     * - If the snapshotHash from the server differs from currentHash, it indicates that the settings have changed.
+     * - A message is logged, and the page is reloaded using location.reload() to reflect the updated settings.
+     *
+     */
     let currentHash = "@Model.SnapshotHash";
 
     console.log("Polling script loaded. Current hash:", currentHash);

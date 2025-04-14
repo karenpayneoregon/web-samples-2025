@@ -1,4 +1,5 @@
 ﻿# About this project
+
 <!--TOC-->
   - [Features](#features)
   - [Project Structure](#project-structure)
@@ -7,7 +8,9 @@
       - [Key Methods](#key-methods)
       - [Events](#events)
   - [Documentation](#documentation)
+  - [Index1 page](#index1-page)
 <!--/TOC-->
+
 IOptionsMonitorAzureSettingsApp is a Razor Pages project designed to demonstrate the use of `IOptionsMonitor<T>` for managing and monitoring Azure configuration settings in real-time. This project provides a robust and scalable way to handle dynamic configuration updates for Azure services.
 
 ## Features
@@ -52,6 +55,11 @@ Created using `GitHub Copilot` with the following prompt:
 
 _Using GitHub markdown for a readme.md file document the project IOptionsMonitorAzureSettingsApp_
 
+## Index1 page
+
+The majority of the code for Index1 page was written use AI then modified by Karen.
+
+The code for Index1 page is a model for use in a real application, just needs `validation` and `error handling`.
 
 
 
