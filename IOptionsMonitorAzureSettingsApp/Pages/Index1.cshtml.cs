@@ -11,7 +11,7 @@ namespace IOptionsMonitorAzureSettingsApp.Pages;
 /// </summary>
 public class Index1Model(SettingsMonitorService monitor) : PageModel
 {
-    public AzureSettings Settings { get; private set; }
+    public AzureSettings1 Settings { get; private set; }
     public string SnapshotHash { get; private set; }
 
     /// <summary>

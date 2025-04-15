@@ -13,7 +13,7 @@ namespace IOptionsMonitorAzureSettingsApp.Services;
 /// </remarks>
 public class SettingsMonitorService
 {
-    private AzureSettings _current;
+    private AzureSettings1 _current;
     private string _lastSnapshot;
 
     /// <summary>
@@ -26,7 +26,7 @@ public class SettingsMonitorService
     /// This constructor sets up a change listener to update the current settings and snapshot hash
     /// whenever the configuration changes.
     /// </remarks>
-    public SettingsMonitorService(IOptionsMonitor<AzureSettings> monitor)
+    public SettingsMonitorService(IOptionsMonitor<AzureSettings1> monitor)
     {
         _current = monitor.CurrentValue;
         _lastSnapshot = ComputeSnapshot(_current);
@@ -35,7 +35,7 @@ public class SettingsMonitorService
         {
             _current = updated;
             _lastSnapshot = ComputeSnapshot(updated);
-            var results = JsonSerializer.Deserialize<AzureSettings>(_lastSnapshot);
+            var results = JsonSerializer.Deserialize<AzureSettings1>(_lastSnapshot);
             /*
              * insert your code here to use the results
              */
@@ -53,7 +53,7 @@ public class SettingsMonitorService
     /// This method provides access to the most recent configuration settings for Azure-related operations.
     /// It is updated automatically when changes are detected in the configuration source.
     /// </remarks>
-    public AzureSettings GetCurrent() => _current;
+    public AzureSettings1 GetCurrent() => _current;
 
     /// <summary>
     /// Retrieves the hash of the current snapshot of <see cref="AzureSettings"/>.
@@ -81,7 +81,7 @@ public class SettingsMonitorService
     /// This method generates a snapshot of the current settings by serializing the <see cref="AzureSettings"/> object.
     /// The resulting JSON string can be used for comparison, storage, or logging purposes.
     /// </remarks>
-    private string ComputeSnapshot(AzureSettings settings) => JsonSerializer.Serialize(settings, Options);
+    private string ComputeSnapshot(AzureSettings1 settings) => JsonSerializer.Serialize(settings, Options);
 
     public static JsonSerializerOptions Options => new() { WriteIndented = true };
 }
