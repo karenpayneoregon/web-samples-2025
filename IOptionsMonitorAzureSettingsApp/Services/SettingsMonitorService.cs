@@ -1,4 +1,5 @@
-﻿using IOptionsMonitorAzureSettingsApp.Models;
+﻿using System.Text.Json;
+using IOptionsMonitorAzureSettingsApp.Models;
 using Microsoft.Extensions.Options;
 
 namespace IOptionsMonitorAzureSettingsApp.Services;
@@ -27,6 +28,11 @@ public class SettingsMonitorService
     /// </remarks>
     public SettingsMonitorService(IOptionsMonitor<AzureSettings> monitor)
     {
+        (string connectionString, string tenantId) Setting(string sender)
+        {
+            var values = sender.Split('|');
+            return (values[0], values[1]);
+        }
         _current = monitor.CurrentValue;
         _lastSnapshot = ComputeSnapshot(_current);
 
@@ -34,7 +40,10 @@ public class SettingsMonitorService
         {
             _current = updated;
             _lastSnapshot = ComputeSnapshot(updated);
-            Console.WriteLine($"[Config Changed] New: {_lastSnapshot}");
+            var results = JsonSerializer.Deserialize<AzureSettings>(_lastSnapshot);
+            /*
+             * insert your code here to use the results
+             */
         });
     }
 
@@ -75,5 +84,7 @@ public class SettingsMonitorService
     /// This method concatenates key properties of the <see cref="AzureSettings"/> object to generate a unique identifier
     /// for the current configuration. The resulting hash can be used to track changes or ensure consistency.
     /// </remarks>
-    private string ComputeSnapshot(AzureSettings settings) => $"{settings.ConnectionString}|{settings.TenantId}";
+    private string ComputeSnapshot(AzureSettings settings) => JsonSerializer.Serialize(settings, options);
+
+    public static JsonSerializerOptions options => new() { WriteIndented = true };
 }
