@@ -28,11 +28,6 @@ public class SettingsMonitorService
     /// </remarks>
     public SettingsMonitorService(IOptionsMonitor<AzureSettings> monitor)
     {
-        (string connectionString, string tenantId) Setting(string sender)
-        {
-            var values = sender.Split('|');
-            return (values[0], values[1]);
-        }
         _current = monitor.CurrentValue;
         _lastSnapshot = ComputeSnapshot(_current);
 
@@ -44,6 +39,7 @@ public class SettingsMonitorService
             /*
              * insert your code here to use the results
              */
+            Console.WriteLine();
         });
     }
 
@@ -71,20 +67,21 @@ public class SettingsMonitorService
     /// </remarks>
     public string GetSnapshotHash() => _lastSnapshot;
 
+
     /// <summary>
-    /// Computes a unique snapshot hash for the provided <see cref="AzureSettings"/> instance.
+    /// Computes a serialized JSON representation of the provided <see cref="AzureSettings"/> instance.
     /// </summary>
     /// <param name="settings">
-    /// The <see cref="AzureSettings"/> instance for which the snapshot hash is to be computed.
+    /// The <see cref="AzureSettings"/> instance to be serialized into a JSON string.
     /// </param>
     /// <returns>
-    /// A <see cref="string"/> representing the computed hash of the provided <see cref="AzureSettings"/> instance.
+    /// A <see cref="string"/> containing the JSON representation of the provided <see cref="AzureSettings"/>.
     /// </returns>
     /// <remarks>
-    /// This method concatenates key properties of the <see cref="AzureSettings"/> object to generate a unique identifier
-    /// for the current configuration. The resulting hash can be used to track changes or ensure consistency.
+    /// This method generates a snapshot of the current settings by serializing the <see cref="AzureSettings"/> object.
+    /// The resulting JSON string can be used for comparison, storage, or logging purposes.
     /// </remarks>
-    private string ComputeSnapshot(AzureSettings settings) => JsonSerializer.Serialize(settings, options);
+    private string ComputeSnapshot(AzureSettings settings) => JsonSerializer.Serialize(settings, Options);
 
-    public static JsonSerializerOptions options => new() { WriteIndented = true };
+    public static JsonSerializerOptions Options => new() { WriteIndented = true };
 }
