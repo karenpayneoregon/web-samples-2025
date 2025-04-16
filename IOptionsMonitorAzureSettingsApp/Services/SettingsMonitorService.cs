@@ -20,7 +20,7 @@ public class SettingsMonitorService
     /// Initializes a new instance of the <see cref="SettingsMonitorService"/> class.
     /// </summary>
     /// <param name="monitor">
-    /// An instance of <see cref="IOptionsMonitor{TOptions}"/> for monitoring changes to <see cref="AzureSettings"/>.
+    /// An instance of <see cref="IOptionsMonitor{TOptions}"/> for monitoring changes to <see cref="AzureSettings1"/>.
     /// </param>
     /// <remarks>
     /// This constructor sets up a change listener to update the current settings and snapshot hash
@@ -56,7 +56,7 @@ public class SettingsMonitorService
     public AzureSettings1 GetCurrent() => _current;
 
     /// <summary>
-    /// Retrieves the hash of the current snapshot of <see cref="AzureSettings"/>.
+    /// Retrieves the hash of the current snapshot of <see cref="AzureSettings1"/>.
     /// </summary>
     /// <returns>
     /// A <see cref="string"/> representing the hash of the latest snapshot of the monitored settings.
