@@ -61,6 +61,22 @@ The majority of the code for Index1 page was written use AI then modified by Kar
 
 The code for Index1 page is a model for use in a real application, just needs `validation` and `error handling`.
 
+Recommend taking time to run through the code and understand it by setting breakpoints as the code is rather complex.
+
+In `SettingsMonitorService.ComputeSnapshot` ensures that rather than code in `AzureWorker.OnSettingsChanged` is trigger once rather than multiple times which is how `IOptionsMonitor<T>.OnChange(...)` works.
+
+The following code ensures that the `OnChange` event is only triggered once when the settings are changed:
+
+```csharp
+// Only invoke if the snapshot really changed
+if (newSnapshot != _lastSnapshot)
+{
+	_current = updated;
+	_lastSnapshot = newSnapshot;
+	SettingsChanged?.Invoke(_current);
+}
+```
+
 
 
 

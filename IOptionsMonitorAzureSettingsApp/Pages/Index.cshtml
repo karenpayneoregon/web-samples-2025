@@ -5,7 +5,7 @@
 }
 
 <div class="container">
-    <h2>Azure Settings</h2>
+    <h1>Azure Settings</h1>
 
     <p><strong>Default Connection String:</strong> @Model.DefaultConnectionString</p>
     <p><strong>Default Tenant ID:</strong> @Model.DefaultTenantId</p>
@@ -23,7 +23,7 @@
                 .then(data => {
                     if (data.updated) {
                         document.getElementById("changeNotification").innerText = data.message;
-                        setTimeout(() => location.reload(), 3000); // Refresh page after 3 seconds (first project was 5 seconds)
+                        setTimeout(() => location.reload(), 3000); // Refresh page 
                     }
                 });
         }, 5000); // Check every 5 seconds

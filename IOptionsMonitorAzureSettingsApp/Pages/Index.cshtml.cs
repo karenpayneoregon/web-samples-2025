@@ -70,7 +70,7 @@ public class IndexModel : PageModel
         bool hasChanged = false;
         string message = string.Empty;
 
-        // Check if Default settings changed
+        // Check if Default settings changed.
         if (latestSettings.ConnectionString != _lastDefaultConnectionString)
         {
             hasChanged = true;

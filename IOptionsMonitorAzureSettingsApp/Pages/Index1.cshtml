@@ -45,14 +45,14 @@
             }
 
             const data = await response.json();
+            // for demonstration purposes only.
             console.log("Received hash:", data.snapshotHash);
 
             if (data.snapshotHash !== currentHash) {
-                console.log("Settings changed. Reloading...");
                 location.reload();
             }
         } catch (e) {
-            console.error("Polling error:", e);
+            console.error("Polling error: ", e);
         }
     }, 5000);
 </script>

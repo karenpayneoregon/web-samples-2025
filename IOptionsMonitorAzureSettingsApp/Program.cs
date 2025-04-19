@@ -32,7 +32,7 @@ public class Program
         // Service to monitor changes in Azure settings in Index1 page
         builder.Services.Configure<AzureSettings1>(builder.Configuration.GetSection("Azure"));
         builder.Services.AddSingleton<SettingsMonitorService>();
-        builder.Services.AddHostedService<MyWorker>();
+        builder.Services.AddHostedService<AzureWorker>();
 
         // Add services to the container.
         builder.Services.AddRazorPages();
