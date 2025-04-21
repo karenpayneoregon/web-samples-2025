@@ -1,0 +1,36 @@
+﻿@page
+@using SerilogDestructuringSampleApp.Models
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<h1 class="text-center">IDestructuringPolicy</h1>
+
+<div class="d-flex justify-content-center">
+    <div class="text-primary fs-4">See console window</div>
+</div>
+
+<div class="container mt-4">
+    <h2>Customer Directory</h2>
+
+    @foreach (var customer in Model.Customers)
+    {
+        <div class="row border rounded mb-3 p-3">
+            <div class="col-md-3">
+                <strong>@customer.FirstName @customer.LastName</strong><br />
+                <span>@customer.WorkTitle</span>
+            </div>
+            <div class="col-md-4">
+                <span><strong>Email:</strong> @customer.OfficeEmail</span><br />
+                <span><strong>Phone:</strong> @customer.OfficePhoneNumber</span>
+            </div>
+            <div class="col-md-3">
+                <span><strong>Date of Birth:</strong> @customer.DateOfBirth.ToShortDateString()</span>
+            </div>
+            <div class="col-md-3">
+                <span><strong>Customer Type:</strong> @(customer is GoldCustomer ? "Gold" : "Standard")</span>
+            </div>
+        </div>
+    }
+</div>

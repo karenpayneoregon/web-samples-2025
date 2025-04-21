@@ -17,6 +17,14 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		readme.md = readme.md
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Serilog", "Serilog", "{31ADB95D-FF8C-4B44-B885-B34C2B365E3F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SerilogDestructuringSampleApp", "SerilogDestructuringSampleApp\SerilogDestructuringSampleApp.csproj", "{C65856BC-6D43-4849-81F6-539F783D7DAF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Temp Data", "Temp Data", "{0C204F9C-16E6-42BB-8CC7-59AB658B4069}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TempDataSimple", "TempDataSimple\TempDataSimple.csproj", "{0AAEEB7E-ECE9-3CA1-7EC8-2BE1E368F437}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,6 +43,14 @@ Global
 		{2B11BE96-4370-48FD-2115-64395B7C03A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2B11BE96-4370-48FD-2115-64395B7C03A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2B11BE96-4370-48FD-2115-64395B7C03A8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C65856BC-6D43-4849-81F6-539F783D7DAF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C65856BC-6D43-4849-81F6-539F783D7DAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C65856BC-6D43-4849-81F6-539F783D7DAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C65856BC-6D43-4849-81F6-539F783D7DAF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0AAEEB7E-ECE9-3CA1-7EC8-2BE1E368F437}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0AAEEB7E-ECE9-3CA1-7EC8-2BE1E368F437}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0AAEEB7E-ECE9-3CA1-7EC8-2BE1E368F437}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0AAEEB7E-ECE9-3CA1-7EC8-2BE1E368F437}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -44,6 +60,8 @@ Global
 		{7A86797E-241E-4B33-8439-B10E415E1652} = {C64CC3A1-84DC-4052-8DDD-0302324332A0}
 		{2B11BE96-4370-48FD-2115-64395B7C03A8} = {C64CC3A1-84DC-4052-8DDD-0302324332A0}
 		{C64CC3A1-84DC-4052-8DDD-0302324332A0} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{C65856BC-6D43-4849-81F6-539F783D7DAF} = {31ADB95D-FF8C-4B44-B885-B34C2B365E3F}
+		{0AAEEB7E-ECE9-3CA1-7EC8-2BE1E368F437} = {0C204F9C-16E6-42BB-8CC7-59AB658B4069}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C6A3BA30-3DE1-458D-9B87-DB15A5B9F4DF}
