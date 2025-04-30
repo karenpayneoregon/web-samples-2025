@@ -24,7 +24,7 @@ public class IndexModel : PageModel
     /// </summary>
     public void OnGet()
     {
-        AnsiConsole.MarkupLine("[deeppink1]Customers:[/]");
+        AnsiConsole.MarkupLine($"[{Color.DeepPink1_1}]Customers:[/]");
 
         foreach (var customer in Customers)
         {
@@ -36,8 +36,8 @@ public class IndexModel : PageModel
 
         Console.WriteLine();
 
-        AnsiConsole.MarkupLine("[deeppink1]Connection:[/]");
-
+        AnsiConsole.MarkupLine($"[{Color.DeepPink1_1}]Connection:[/]");
+        
         const string connectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=NorthWind2022;Integrated Security=True";
         var connection = new SqlConnection(connectionString);
         Log.Information("Connection {@C}", connection);

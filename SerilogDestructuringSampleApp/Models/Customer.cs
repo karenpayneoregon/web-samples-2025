@@ -6,7 +6,7 @@ namespace SerilogDestructuringSampleApp.Models;
 /// Represents a customer with basic details such as personal and contact information.
 /// </summary>
 /// <remarks>
-/// This class implements the <see cref="SerilogDestructuringSampleApp.Interfaces.ICustomer"/> interface 
+/// This class implements the <see cref="ICustomer"/> interface 
 /// and provides properties for storing customer-related data, including their work title, name, 
 /// date of birth, office email, and phone number.
 /// </remarks>
